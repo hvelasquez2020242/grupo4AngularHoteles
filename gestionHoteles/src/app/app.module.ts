@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { RegistroComponent } from './components/registro/registro.component';
+import { HotelesComponent } from './components/hoteles/hoteles.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { RegistroComponent } from './components/registro/registro.component';
     AppComponent,
     LoginComponent,
     NavbarComponent,
-    RegistroComponent
+    RegistroComponent,
+    HotelesComponent
   ],
   imports: [
     BrowserModule,

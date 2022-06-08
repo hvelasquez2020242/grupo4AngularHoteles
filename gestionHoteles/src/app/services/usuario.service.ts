@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Usuario } from '../models/usuario.model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,9 @@ export class UsuarioService {
   public token;
   public identidad;
 
-  constructor(public _http: HttpClient) { }
+  constructor(public _http: HttpClient) {
+    
+   }
 
   login(usuario, obtenerToken = null): Observable<any> {
 
@@ -24,7 +27,12 @@ export class UsuarioService {
 
     return this._http.post(this.url + '/login', params, { headers: this.headersVariable });
   }
-  registro(usuario)
+  registro(modeloUsuario: Usuario): Observable<any>{
+    let parametros = JSON.stringify(modeloUsuario);
+
+    return this._http.post(this.url + '/registro', parametros, {headers: this.headersVariable})
+
+  }
 
   getToken(){
     var token2 = localStorage.getItem("token");
