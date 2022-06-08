@@ -24,6 +24,7 @@ export class UsuarioService {
 
     return this._http.post(this.url + '/login', params, { headers: this.headersVariable });
   }
+  registro(usuario)
 
   getToken(){
     var token2 = localStorage.getItem("token");
