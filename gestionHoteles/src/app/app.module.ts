@@ -9,6 +9,8 @@ import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { HotelesComponent } from './components/hoteles/hoteles.component';
+import { HomeComponent } from './components/home/home.component';
+import { IndefinidoComponent } from './components/indefinido/indefinido.component';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { HotelesComponent } from './components/hoteles/hoteles.component';
     LoginComponent,
     NavbarComponent,
     RegistroComponent,
-    HotelesComponent
+    HotelesComponent,
+    HomeComponent,
+    IndefinidoComponent
   ],
   imports: [
     BrowserModule,
