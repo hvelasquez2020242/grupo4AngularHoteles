@@ -5,12 +5,17 @@ import { HotelesComponent } from './components/hoteles/hoteles.component';
 import { IndefinidoComponent } from './components/indefinido/indefinido.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistroComponent } from './components/registro/registro.component';
+import { EventosComponent } from './components/eventos/eventos.component';
+import { HotelesEventosComponent } from './components/hoteles-eventos/hoteles-eventos.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'registro', component: RegistroComponent},
   {path: 'hoteles', component: HotelesComponent},
   {path: 'home', component: HomeComponent},
+  {path: 'hotelesEventos', component: HotelesEventosComponent, children: [
+    {path: 'eventos', component: EventosComponent}
+  ]},
   {path: '', component: HomeComponent},
   {path: '**', component: IndefinidoComponent}
 ];
