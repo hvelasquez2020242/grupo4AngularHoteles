@@ -197,7 +197,7 @@
       </div>
       <div class="modal-footer border-0">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-outline-secondary">Reservar</button>
+        <a type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Reservar</a>
       </div>
     </div>
   </div>
@@ -208,7 +208,8 @@
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
       <div class="d-flex justify-content-center mt-2 border-0">
-        <a class="btn btn-outline-dark col-3 m-3" data-bs-toggle="modal" data-bs-target="#habitacionSimple"  (click)="getHabitacionesSimple(hotelModelGetId._id)">Habitacion
+        <a class="btn btn-outline-dark col-3 m-3" data-bs-toggle="modal" data-bs-target="#habitacionSimple"
+          (click)="getHabitacionesSimple(hotelModelGetId._id)">Habitacion
           simple</a>
         <a class="btn btn-outline-dark col-3 m-3 active" data-bs-toggle="modal"
           data-bs-target="#habitacionMedia">Habitacion media</a>
@@ -457,7 +458,8 @@
             </div>
           </div>
         </div>
-      </div>      <div class="modal-footer border-0">
+      </div>
+      <div class="modal-footer border-0">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
         <button type="button" class="btn btn-primary">Agregar</button>
       </div>
@@ -487,7 +489,8 @@
             <p class="mb-4">{{hotelModelGetId.descripcion}}</p>
             <div class="d-flex">
               <div class="ml-auto">
-                <a class="btn btn-outline-dark mt-auto" style="margin-right: 12px;" (click)="eventosGet()"  data-bs-dismiss="modal">Ver eventos</a>
+                <a class="btn btn-outline-dark mt-auto" style="margin-right: 12px;" (click)="eventosGet()"
+                  data-bs-dismiss="modal">Ver eventos</a>
                 <a class="btn btn-outline-dark mt-auto" data-bs-target="#habitacionSimple" data-bs-toggle="modal"
                   (click)="getHabitacionesSimple(hotelModelGetId._id)">Ver
                   habitaciones</a>
@@ -498,5 +501,65 @@
 
       </div>
     </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-body ">
+              <div class="text-right"> <i class="fa fa-close close" data-dismiss="modal"></i> </div>
+
+              <div class="px-4 py-5">
+
+                  <h5 class="text-uppercase">Jonathan Adler</h5>
+
+
+
+              <h4 class="mt-5 theme-color mb-5">Thanks for your order</h4>
+
+              <span class="theme-color">Payment Summary</span>
+              <div class="mb-3">
+                  <hr class="new1">
+              </div>
+
+              <div class="d-flex justify-content-between">
+                  <span class="font-weight-bold">Ether Chair(Qty:1)</span>
+                  <span class="text-muted">$1750.00</span>
+              </div>
+
+              <div class="d-flex justify-content-between">
+                  <small>Shipping</small>
+                  <small>$175.00</small>
+              </div>
+
+
+              <div class="d-flex justify-content-between">
+                  <small>Tax</small>
+                  <small>$200.00</small>
+              </div>
+
+              <div class="d-flex justify-content-between mt-3">
+                  <span class="font-weight-bold">Total</span>
+                  <span class="font-weight-bold theme-color">$2125.00</span>
+              </div>
+
+
+
+              <div class="text-center mt-5">
+
+
+                  <button class="btn btn-primary">Track your order</button>
+
+
+
+              </div>
+
+              </div>
+
+
+          </div>
+      </div>
   </div>
 </div>
