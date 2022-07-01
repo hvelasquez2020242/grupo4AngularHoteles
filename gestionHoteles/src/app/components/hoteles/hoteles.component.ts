@@ -4,7 +4,7 @@ import { HotelService } from 'src/app/services/hotele.service';
 import { Habitaciones } from '../../models/habitacion.model'
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { Router } from '@angular/router';
-
+import { cantidadDias } from 'src/app/models/dias.model';
 @Component({
   selector: 'app-hoteles',
   templateUrl: './hoteles.component.html',
@@ -17,6 +17,7 @@ export class HotelesComponent implements OnInit {
   public habitacionesModelGet: any;
   public habitacionesModelGetLujosa: any;
   public habitacionesModelGetMedia: any;
+  public cantidadDeDiasModelPost: cantidadDias;
 
 
 
@@ -33,6 +34,10 @@ export class HotelesComponent implements OnInit {
     0,
     ''
   ),
+  this.cantidadDeDiasModelPost = new cantidadDias(
+    0
+  )
+  ,
   this.habitacionesModelGetId = new Habitaciones(
     '',
     '',
@@ -112,5 +117,9 @@ export class HotelesComponent implements OnInit {
   }
   eventosGet(){
     this._router.navigate(['/hotelesEventos/eventos']);
+  }
+  asignarDias(){
+    console.log(this.cantidadDeDiasModelPost.numero);
+
   }
 }
