@@ -14,7 +14,7 @@ export class UsuarioService {
   public identidad;
 
   constructor(public _http: HttpClient) {
-    
+
    }
 
   login(usuario, obtenerToken = null): Observable<any> {
@@ -34,6 +34,7 @@ export class UsuarioService {
 
   }
 
+
   getToken(){
     var token2 = localStorage.getItem("token");
     if(token2 != undefined){
@@ -44,6 +45,7 @@ export class UsuarioService {
 
     return this.token;
   }
+
 
   getIdentidad() {
     var identidad2 = JSON.parse(localStorage.getItem('identidad'));

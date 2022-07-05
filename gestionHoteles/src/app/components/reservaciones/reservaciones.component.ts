@@ -26,7 +26,7 @@ export class ReservacionesComponent implements OnInit {
     this._reservacionService.obtenerReservacionId(this.token).subscribe({
       next: (response: any) => {
         this.reservacionModelGet = response.reservacion;
-        console.log(this.reservacionModelGet.total);
+        console.log(response.reservacion);
 
       }
     })

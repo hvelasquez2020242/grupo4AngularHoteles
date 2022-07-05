@@ -5,10 +5,14 @@ import { Habitaciones } from '../../models/habitacion.model'
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { Router } from '@angular/router';
 import { cantidadDias } from 'src/app/models/dias.model';
+import { ReservacionService } from 'src/app/services/reservacion.service';
+import { Reservacion } from 'src/app/models/reservacion.model';
+
 @Component({
   selector: 'app-hoteles',
   templateUrl: './hoteles.component.html',
-  styleUrls: ['./hoteles.component.scss']
+  styleUrls: ['./hoteles.component.scss'],
+  providers: [HotelService]
 })
 export class HotelesComponent implements OnInit {
   public hotelModelGet: any;
@@ -18,35 +22,40 @@ export class HotelesComponent implements OnInit {
   public habitacionesModelGetLujosa: any;
   public habitacionesModelGetMedia: any;
   public cantidadDeDiasModelPost: cantidadDias;
+  public idHotel: any;
+  public token;
+  public reservacionModelPost: Reservacion;
 
 
+  constructor(private _HotelService: HotelService, private _usuarioService: UsuarioService, private _router: Router,
+    private _reservacionService: ReservacionService) {
+    this.hotelModelGetId = new Hotel(
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      0,
+      ''
+    ),
+    this.token = this._usuarioService.getToken();
 
-  constructor(private _HotelService: HotelService, private _usuarioService: UsuarioService,   private _router: Router    ) {
-  this.hotelModelGetId = new Hotel(
-    '',
-    '',
-    '',
-    '',
-    '',
-    '',
-    '',
-    '',
-    0,
-    ''
-  ),
-  this.cantidadDeDiasModelPost = new cantidadDias(
-    0
-  )
-  ,
-  this.habitacionesModelGetId = new Habitaciones(
-    '',
-    '',
-    0,
-    '',
-    '',
-    '',
-    ''
-  )
+      this.cantidadDeDiasModelPost = new cantidadDias(
+        0
+      )
+      ,
+      this.habitacionesModelGetId = new Habitaciones(
+        '',
+        '',
+        0,
+        '',
+        '',
+        '',
+        ''
+      )
   }
 
   ngOnInit(): void {
@@ -60,66 +69,78 @@ export class HotelesComponent implements OnInit {
         console.log(response.hoteles);
         this.hotelModelGet = response.hoteles;
       },
-      error: (err) =>{
+      error: (err) => {
         console.log(err);
 
       }
     })
   }
-  getHotelesId(idHotel){
+  asignarId(id) {
+    this.idHotel = id;
+  }
+  getHotelesId(idHotel) {
     this._HotelService.obtenerHotelesId(idHotel).subscribe({
-      next: (response: any) =>{
+      next: (response: any) => {
         console.log(response);
         this.hotelModelGetId = response.hotel;
 
       },
-      error: (err) =>{
+      error: (err) => {
         console.log(err);
 
       }
     })
   }
-  getHabitacionesSimple(idHotel){
+  getHabitacionesSimple(idHotel) {
     this._HotelService.obtenerHabitacionesSimple(idHotel).subscribe({
-      next: (response: any) =>{
+      next: (response: any) => {
         console.log(response.habitaciones);
         this.habitacionesModelGet = response.habitaciones;
       },
-      error: (err)=>{
+      error: (err) => {
         console.log(err);
 
       }
     })
   }
-  getHabitacionesMedia(idHotel){
+  getHabitacionesMedia(idHotel) {
     this._HotelService.obtenerHabitacionesMedia(idHotel).subscribe({
-      next: (response: any) =>{
+      next: (response: any) => {
         console.log(response.habitaciones);
         this.habitacionesModelGetMedia = response.habitaciones;
       },
-      error: (err)=>{
+      error: (err) => {
         console.log(err);
 
       }
     })
   }
-  getHabitacionesLujosa(idHotel){
+  getHabitacionesLujosa(idHotel) {
     this._HotelService.obtenerHabitacionesLujosa(idHotel).subscribe({
-      next: (response: any) =>{
+      next: (response: any) => {
         console.log(response.habitaciones);
         this.habitacionesModelGetLujosa = response.habitaciones;
       },
-      error: (err)=>{
+      error: (err) => {
         console.log(err);
 
       }
     })
   }
-  eventosGet(){
+  eventosGet() {
     this._router.navigate(['/hotelesEventos/eventos']);
   }
-  asignarDias(){
-    console.log(this.cantidadDeDiasModelPost.numero);
+  asignarDias() {
 
+    this._reservacionService.agregarReservacion(this.token ,this.hotelModelGetId._id , this.cantidadDeDiasModelPost.numero).subscribe(
+      (response) => {
+        console.log(response);
+
+      },
+      (err) => {
+        console.log(<any>err);
+
+      }
+    )
   }
 }

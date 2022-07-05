@@ -1,21 +1,28 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { cantidadDias } from '../models/dias.model';
+import { Hotel } from '../models/hotel.model';
 import { Reservacion } from '../models/reservacion.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReservacionService {
-  public url : String = 'http://localhost:3000/api'
+  public url: String = 'http://localhost:3000/api'
   constructor(public _http: HttpClient) { }
   public headersVariable = new HttpHeaders().set('Content-Type', 'application/json')
 
   obtenerReservacionId(token): Observable<any> {
     let headersToken = this.headersVariable.set('Authorization', token);
 
-    return this._http.get(this.url + '/obtenerReservacionId', {headers: headersToken });
+    return this._http.get(this.url + '/obtenerReservacionId', { headers: headersToken });
 
   }
+  agregarReservacion(token, idHabitacion, cantidadDias): Observable<any> {
 
+    let headersToken = this.headersVariable.set('Authorization', token)
+    return this._http.post(this.url + '/agregarReservacion/' + idHabitacion + '/' + cantidadDias , { headers: headersToken });
+
+  }
 }

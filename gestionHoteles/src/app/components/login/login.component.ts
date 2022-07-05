@@ -59,7 +59,6 @@ export class LoginComponent implements OnInit {
       (response)=>{
 
         this.getTokenPromesa().then(respuesta => {
-          console.log(respuesta);
           localStorage.setItem('identidad', JSON.stringify(response.usuario))
 
         })
