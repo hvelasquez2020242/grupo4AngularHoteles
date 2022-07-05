@@ -14,6 +14,7 @@ import { IndefinidoComponent } from './components/indefinido/indefinido.componen
 import { EventosComponent } from './components/eventos/eventos.component';
 import { HotelesEventosComponent } from './components/hoteles-eventos/hoteles-eventos.component';
 import { ReservacionesComponent } from './components/reservaciones/reservaciones.component';
+import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { ReservacionesComponent } from './components/reservaciones/reservaciones
     IndefinidoComponent,
     EventosComponent,
     HotelesEventosComponent,
-    ReservacionesComponent
+    ReservacionesComponent,
+    AdminPanelComponent
   ],
   imports: [
     BrowserModule,

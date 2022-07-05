@@ -8,9 +8,11 @@ import { RegistroComponent } from './components/registro/registro.component';
 import { EventosComponent } from './components/eventos/eventos.component';
 import { HotelesEventosComponent } from './components/hoteles-eventos/hoteles-eventos.component';
 import { ReservacionesComponent } from './components/reservaciones/reservaciones.component';
+import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
+  {path: 'admin', component: AdminPanelComponent},
   {path: 'registro', component: RegistroComponent},
   {path: 'hoteles', component: HotelesComponent},
   {path: 'home', component: HomeComponent},

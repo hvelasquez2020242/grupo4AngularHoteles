@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
 
   public usuarioModel: Usuario;
 
-  constructor(private _usuarioService: UsuarioService) {
+  constructor(private _usuarioService: UsuarioService, private _router: Router) {
     this.usuarioModel = new Usuario(
       "",
       "",
@@ -26,13 +26,13 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  getToken(){
+  getToken() {
     this._usuarioService.login(this.usuarioModel, "true").subscribe(
-      (response)=>{
+      (response) => {
         console.log(response.token);
         localStorage.setItem("token", response.token)
       },
-      (error)=>{
+      (error) => {
         console.log(<any>error);
 
       }
@@ -40,13 +40,13 @@ export class LoginComponent implements OnInit {
   }
 
   getTokenPromesa(): Promise<any> {
-    return new Promise((resolve, reject)=>{
+    return new Promise((resolve, reject) => {
       this._usuarioService.login(this.usuarioModel, "true").subscribe(
-        (response)=>{
+        (response) => {
           localStorage.setItem("token", response.token)
           resolve(response);
         },
-        (error)=>{
+        (error) => {
           console.log(<any>error);
 
         }
@@ -54,16 +54,24 @@ export class LoginComponent implements OnInit {
     })
   }
 
-  login(){
+  login() {
     this._usuarioService.login(this.usuarioModel).subscribe(
-      (response)=>{
+      (response) => {
+        console.log(response.usuario.rol);
 
         this.getTokenPromesa().then(respuesta => {
           localStorage.setItem('identidad', JSON.stringify(response.usuario))
 
         })
+        if (response.usuario.rol === 'SuperAdmin') {
+          this._router.navigate(['/admin']);
+
+        } else {
+          this._router.navigate(['/hoteles']);
+
+        }
       },
-      (error)=>{
+      (error) => {
         console.log(<any>error);
       }
     );
