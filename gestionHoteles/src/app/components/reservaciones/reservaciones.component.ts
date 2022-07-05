@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Reservacion } from 'src/app/models/reservacion.model';
 import { ReservacionService } from 'src/app/services/reservacion.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-reservaciones',
@@ -42,6 +44,28 @@ export class ReservacionesComponent implements OnInit {
       },
       error: (err) => {
         console.log(err);
+
+      }
+    })
+  }
+  postHospedaje(idReservacion){
+    this._reservacionService.agregarHospedaje(this.token, idReservacion).subscribe({
+      next: (response: any) =>{
+        console.log(response);
+        Swal.fire({
+          title: 'Hospedado exitosamente',
+          icon: 'success',
+          showConfirmButton: false,
+          timer: 1500
+        });
+      },
+      error: (err) =>{
+        Swal.fire({
+          title: err.error.mensaje,
+          icon: 'error',
+          showConfirmButton: false,
+          timer: 1500
+        })
 
       }
     })

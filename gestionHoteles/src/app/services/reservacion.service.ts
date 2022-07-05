@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { cantidadDias } from '../models/dias.model';
 import { Hotel } from '../models/hotel.model';
 import { Reservacion } from '../models/reservacion.model';
+import { Hospedados } from '../models/hospedados.model';
 
 @Injectable({
   providedIn: 'root'
@@ -28,5 +29,13 @@ export class ReservacionService {
   obtenerUser(token){
     let headersToken = this.headersVariable.set('Authorization', token);
     return this._http.get(this.url + '/obtenerUsuariosId', {headers: headersToken})
+  }
+  agregarHospedaje(token, idReservacion){
+    let parametros = null;
+
+    let headersToken = this.headersVariable.set('Authorization', token);
+
+    return this._http.post(this.url + '/agregarHospedaje/' + idReservacion , parametros, {headers: headersToken})
+
   }
 }

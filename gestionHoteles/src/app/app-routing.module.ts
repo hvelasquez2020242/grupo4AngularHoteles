@@ -9,6 +9,7 @@ import { EventosComponent } from './components/eventos/eventos.component';
 import { HotelesEventosComponent } from './components/hoteles-eventos/hoteles-eventos.component';
 import { ReservacionesComponent } from './components/reservaciones/reservaciones.component';
 import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
+import { AdminHotelComponent } from './components/admin-hotel/admin-hotel.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: 'registro', component: RegistroComponent},
   {path: 'hoteles', component: HotelesComponent},
   {path: 'home', component: HomeComponent},
+  {path: 'adminHotel',component: AdminHotelComponent},
   {path: 'reservaciones', component: ReservacionesComponent},
   {path: 'hotelesEventos', component: HotelesEventosComponent, children: [
     {path: 'eventos', component: EventosComponent}

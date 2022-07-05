@@ -15,6 +15,7 @@ import { EventosComponent } from './components/eventos/eventos.component';
 import { HotelesEventosComponent } from './components/hoteles-eventos/hoteles-eventos.component';
 import { ReservacionesComponent } from './components/reservaciones/reservaciones.component';
 import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
+import { AdminHotelComponent } from './components/admin-hotel/admin-hotel.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { AdminPanelComponent } from './components/admin-panel/admin-panel.compon
     EventosComponent,
     HotelesEventosComponent,
     ReservacionesComponent,
-    AdminPanelComponent
+    AdminPanelComponent,
+    AdminHotelComponent
   ],
   imports: [
     BrowserModule,

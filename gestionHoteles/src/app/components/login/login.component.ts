@@ -67,7 +67,13 @@ export class LoginComponent implements OnInit {
           this._router.navigate(['/admin']);
 
         } else {
-          this._router.navigate(['/hoteles']);
+          if(response.usuario.rol === 'adminHotel'){
+            this._router.navigate(['/adminHotel']);
+
+          }else{
+            this._router.navigate(['/hoteles']);
+
+          }
 
         }
       },
