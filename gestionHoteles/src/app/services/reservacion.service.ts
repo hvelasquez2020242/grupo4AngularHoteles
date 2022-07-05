@@ -38,4 +38,6 @@ export class ReservacionService {
     return this._http.post(this.url + '/agregarHospedaje/' + idReservacion , parametros, {headers: headersToken})
 
   }
+
 }
+
