@@ -29,7 +29,10 @@ export class HotelesComponent implements OnInit {
 
   constructor(private _HotelService: HotelService, private _usuarioService: UsuarioService, private _router: Router,
     private _reservacionService: ReservacionService) {
-      this.token = this._usuarioService.getToken()
+
+
+
+    this.token = this._usuarioService.getToken()
     this.hotelModelGetId = new Hotel(
       '',
       '',
