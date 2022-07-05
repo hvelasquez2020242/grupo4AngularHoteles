@@ -29,6 +29,7 @@ export class HotelesComponent implements OnInit {
 
   constructor(private _HotelService: HotelService, private _usuarioService: UsuarioService, private _router: Router,
     private _reservacionService: ReservacionService) {
+      this.token = this._usuarioService.getToken()
     this.hotelModelGetId = new Hotel(
       '',
       '',
@@ -41,7 +42,6 @@ export class HotelesComponent implements OnInit {
       0,
       ''
     ),
-    this.token = this._usuarioService.getToken();
 
       this.cantidadDeDiasModelPost = new cantidadDias(
         0
@@ -130,6 +130,7 @@ export class HotelesComponent implements OnInit {
   eventosGet() {
     this._router.navigate(['/hotelesEventos/eventos']);
   }
+
   asignarDias() {
 
     this._reservacionService.agregarReservacion(this.token ,this.hotelModelGetId._id , this.cantidadDeDiasModelPost.numero).subscribe(

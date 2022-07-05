@@ -20,9 +20,13 @@ export class ReservacionService {
 
   }
   agregarReservacion(token, idHabitacion, cantidadDias): Observable<any> {
+    let parametros = null;
 
     let headersToken = this.headersVariable.set('Authorization', token)
-    return this._http.post(this.url + '/agregarReservacion/' + idHabitacion + '/' + cantidadDias , { headers: headersToken });
-
+    return this._http.post(this.url + '/agregarReservacion/' + idHabitacion + '/' + cantidadDias, parametros, { headers: headersToken });
+  }
+  obtenerUser(token){
+    let headersToken = this.headersVariable.set('Authorization', token);
+    return this._http.get(this.url + '/obtenerUsuariosId', {headers: headersToken})
   }
 }
