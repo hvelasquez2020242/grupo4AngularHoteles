@@ -51,6 +51,7 @@ export class ReservacionesComponent implements OnInit {
   postHospedaje(idReservacion){
     this._reservacionService.agregarHospedaje(this.token, idReservacion).subscribe({
       next: (response: any) =>{
+        this.getUsuarioId();
         console.log(response);
         Swal.fire({
           title: 'Hospedado exitosamente',
