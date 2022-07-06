@@ -11,5 +11,5 @@ export class AdminHotelComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  //hola
 }
