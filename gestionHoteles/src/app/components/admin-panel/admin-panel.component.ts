@@ -15,7 +15,7 @@ export class AdminPanelComponent implements OnInit {
   public hotelModelGet: any;
 
 
-  constructor(private _router: Router, private _HotelService: HotelService, private _usuarioService: UsuarioService,) {
+  constructor(private _router: Router, private _HotelService: HotelService, private _usuarioService: UsuarioService) {
 
     this.hotelModelPost = new Hotel(
       '',
