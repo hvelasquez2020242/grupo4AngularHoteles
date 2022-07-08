@@ -1,4 +1,3 @@
-
 <div class="container-fluid" style="width: 100%;">
   <div class="row">
 
@@ -6,26 +5,26 @@
       <div class="card-list">
         <div class="row">
           <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
-            <div class="card blue"  data-bs-toggle="modal" data-bs-target="#cantidadDeDias">
+            <div class="card blue" data-bs-toggle="modal" data-bs-target="#cantidadDeDias">
               <div class="title">Habitacion</div>
               <i class="zmdi zmdi-upload"></i>
-              <div class="value">agregar habitacion</div>
+              <div class="value">Agregar</div>
               <div class="stat"><b>13</b>% increase</div>
             </div>
           </div>
           <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
             <div class="card green">
-              <div class="title">Habitacion</div>
+              <div class="title">Reservacion</div>
               <i class="zmdi zmdi-upload"></i>
-              <div class="value">5,990</div>
+              <div class="value">Ver reservacion</div>
               <div class="stat"><b>4</b>% increase</div>
             </div>
           </div>
           <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
-            <div class="card orange">
-              <div class="title">habitacion</div>
+            <div class="card orange" (click)="getHospedados()">
+              <div class="title">Hospedaje</div>
               <i class="zmdi zmdi-download"></i>
-              <div class="value">$80,990</div>
+              <div class="value">Ver hospedados</div>
               <div class="stat"><b>13</b>% decrease</div>
             </div>
           </div>
@@ -33,7 +32,7 @@
             <div class="card red">
               <div class="title">habitacion</div>
               <i class="zmdi zmdi-download"></i>
-              <div class="value">3</div>
+              <div class="value">Ver habitaciones</div>
               <div class="stat"><b>13</b>% decrease</div>
             </div>
           </div>
@@ -82,12 +81,12 @@
               </td>
               <td>
                 <form class="form" action="#" method="POST">
-                <select class="action-box">
-                  <option>Actions</option>
-                  <option>Start project</option>
-                  <option>Send for QA</option>
-                  <option>Send invoice</option>
-                </select>
+                  <select class="action-box">
+                    <option>Actions</option>
+                    <option>Start project</option>
+                    <option>Send for QA</option>
+                    <option>Send invoice</option>
+                  </select>
                 </form>
               </td>
             </tr>
@@ -103,55 +102,63 @@
 
 <div class="modal fade" id="cantidadDeDias" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
   aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-body ">
 
-
-        <div class="card card-2">
-          <div class="card-heading"></div>
-          <div class="card-body">
-            <h2 class="title">Agregar habitacion</h2>
-            <form method="POST">
-              <div class="input-group">
-                <input class="input--style-2" type="text" placeholder="Name" name="name">
-              </div>
-              <div class="row row-space">
-                <div class="col-2">
+        <div class="page-wrapper bg-blue p-t-100 p-b-100 font-robo d-flex justify-content-center ">
+          <div class="wrapper wrapper--w680">
+            <div class="card card-1">
+              <div class="card-heading"></div>
+              <div class="card-body">
+                <h2 class="title">Agregar hotel</h2>
+                <form method="POST">
                   <div class="input-group">
-                    <input class="input--style-2 js-datepicker" type="text" placeholder="Birthdate" name="birthday">
-                    <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
-                   </div>
-                   <div class>
-
-                   </div>
-                </div>
-
-              </div>
-              <div class="input-group">
-                <div class="rs-select2 js-select-simple select--no-search">
-                  <select name="class">
-                    <option disabled="disabled" selected="selected">tipo</option>
-                    <option>Simple</option>
-                    <option>Media</option>
-                    <option>Lujosa</option>
-                  </select>
-                  <div class="select-dropdown"></div>
-                </div>
-              </div>
-              <div class="row row-space">
-                <div class="col-2">
-                  <div class="input-group">
-                    <input class="input--style-2" type="text" placeholder="Registration Code" name="res_code">
+                    <input class="input--style-1" type="text" placeholder="horario" name="horario" #horario="ngModel"
+                    [(ngModel)]="modelHabitacionPost.horario">
                   </div>
-                </div>
+                  <div class="row row-space">
+                    <div class="col-2">
+                      <div class="input-group">
+                        <input class="input--style-1" type="number" placeholder="precio" name="precio" #precio="ngModel"
+                        [(ngModel)]="modelHabitacionPost.precio">
+                      </div>
+
+                    </div>
+                    <div class="col-2">
+                      <div class="input-group">
+                        <input class="input--style-1" type="text" placeholder="Caracteristicas"  name="caracteristicas" #caracteristicas="ngModel"
+                        [(ngModel)]="modelHabitacionPost.caracteristicas">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row row-space">
+                    <div class="col-2">
+                      <div class="input-group">
+                        <input class="input--style-1" type="text" placeholder="Disponibles"  name="disponibles" #disponibles="ngModel"
+                        [(ngModel)]="modelHabitacionPost.disponibles">
+                      </div>
+
+                    </div>
+                    <div class="col-2">
+                      <div class="input-group">
+                        <input class="input--style-1" type="text" placeholder="Tipo"  name="tipo" #tipo="ngModel"
+                        [(ngModel)]="modelHabitacionPost.tipo">
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="p-t-20">
+                    <button class="btn btn-outline-dark" (click)="postHabitacion()" >Enviar</button>
+                  </div>
+                </form>
               </div>
-              <div class="p-t-30">
-                <button class="btn btn--radius btn--green" type="submit">agregar</button>
-              </div>
-            </form>
+            </div>
           </div>
         </div>
+
 
 
       </div>
