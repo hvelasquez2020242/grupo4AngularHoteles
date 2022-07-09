@@ -79,7 +79,8 @@
   </div> -->
 
 
-<!--</body>--><!-- This templates was made by Colorlib (https://colorlib.com) -->
+<!--</body>-->
+<!-- This templates was made by Colorlib (https://colorlib.com) -->
 
 <!--</html>-->
 
@@ -91,7 +92,7 @@
       <div class="card-list">
         <div class="row">
           <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
-            <div class="card blue"  data-bs-toggle="modal" data-bs-target="#cantidadDeDias">
+            <div class="card blue" data-bs-toggle="modal" data-bs-target="#cantidadDeDias">
               <div class="title">HOTELES</div>
               <i class="zmdi zmdi-upload"></i>
               <div class="value">Agregar hotel</div>
@@ -99,7 +100,7 @@
             </div>
           </div>
           <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
-            <div class="card green" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <div class="card green"  data-bs-toggle="modal" data-bs-target="#editar">
               <div class="title">Hoteles</div>
               <i class="zmdi zmdi-upload"></i>
               <div class="value">Editar Hoteles</div>
@@ -167,12 +168,12 @@
               </td>
               <td>
                 <form class="form" action="#" method="POST">
-                <select class="action-box">
-                  <option>Actions</option>
-                  <option>Start project</option>
-                  <option>Send for QA</option>
-                  <option>Send invoice</option>
-                </select>
+                  <select class="action-box">
+                    <option>Actions</option>
+                    <option>Start project</option>
+                    <option>Send for QA</option>
+                    <option>Send invoice</option>
+                  </select>
                 </form>
               </td>
             </tr>
@@ -199,54 +200,61 @@
             <h2 class="title">Agregar habitacion</h2>
             <form method="POST">
               <div class="input-group">
-                <input class="input--style-2 js-datepicker" type="text" placeholder="Nombre" name="nombre" #nombre="ngModel"
-                [(ngModel)]="hotelModelPost.nombre">
+                <input class="input--style-2 js-datepicker" type="text" placeholder="Nombre" name="nombre"
+                  #nombre="ngModel" [(ngModel)]="hotelModelPost.nombre">
               </div>
 
               <div class="input-group">
-                <input class="input--style-2 js-datepicker" type="text" placeholder="Direccion" name="direccion" #direccion="ngModel"
-                [(ngModel)]="hotelModelPost.direccion">
+                <input class="input--style-2 js-datepicker" type="text" placeholder="Direccion" name="direccion"
+                  #direccion="ngModel" [(ngModel)]="hotelModelPost.direccion">
               </div>
 
               <div class="input-group">
-                <input class="input--style-2 js-datepicker" type="text" placeholder="Descripcion" name="descripcion" #descripcion="ngModel"
-                [(ngModel)]="hotelModelPost.descripcion">
+                <input class="input--style-2 js-datepicker" type="text" placeholder="Descripcion" name="descripcion"
+                  #descripcion="ngModel" [(ngModel)]="hotelModelPost.descripcion">
               </div>
 
               <div class="input-group">
-                <input class="input--style-2 js-datepicker" type="text" placeholder="Nombre del administrador" name="administrador" #administrador="ngModel"
-                [(ngModel)]="hotelModelPost.administrador">
+                <input class="input--style-2 js-datepicker" type="text" placeholder="Nombre del administrador"
+                  name="administrador" #administrador="ngModel" [(ngModel)]="hotelModelPost.administrador">
               </div>
 
               <div class="input-group">
-                <input class="input--style-2 js-datepicker" type="text" placeholder="Contraseña" name="password" #password="ngModel"
-                [(ngModel)]="hotelModelPost.password">
+                <input class="input--style-2 js-datepicker" type="text" placeholder="Contraseña" name="password"
+                  #password="ngModel" [(ngModel)]="hotelModelPost.password">
               </div>
 
               <div class="input-group">
-                <input class="input--style-2 js-datepicker" type="text" placeholder="Idioma" name="idioma" #idioma="ngModel"
-                [(ngModel)]="hotelModelPost.idioma">
+                <input class="input--style-2 js-datepicker" type="text" placeholder="Idioma" name="idioma"
+                  #idioma="ngModel" [(ngModel)]="hotelModelPost.idioma">
               </div>
 
               <div class="input-group">
-                <input class="input--style-2 js-datepicker" type="text" placeholder="Telefono" name="telefono" #telefono="ngModel"
-                [(ngModel)]="hotelModelPost.telefono">
+                <input class="input--style-2 js-datepicker" type="text" placeholder="Telefono" name="telefono"
+                  #telefono="ngModel" [(ngModel)]="hotelModelPost.telefono">
               </div>
 
               <div class="input-group">
-                <input class="input--style-2 js-datepicker" type="text" placeholder="Puesto" name="puesto" #puesto="ngModel"
-                [(ngModel)]="hotelModelPost.puesto">
+                <input class="input--style-2 js-datepicker" type="text" placeholder="Puesto" name="puesto"
+                  #puesto="ngModel" [(ngModel)]="hotelModelPost.puesto">
               </div>
 
               <div class="p-t-20">
-                <button class="btn btn-outline-dark" data-bs-dismiss="modal" (click)="postHoteles()" >Guardar</button>
+                <button class="btn btn-outline-dark" data-bs-dismiss="modal" (click)="postHoteles()">Guardar</button>
               </div>
 
             </form>
           </div>
         </div>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="editar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -268,13 +276,6 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Send message</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
       </div>
     </div>
   </div>
