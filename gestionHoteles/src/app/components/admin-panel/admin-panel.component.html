@@ -94,12 +94,12 @@
             <div class="card blue"  data-bs-toggle="modal" data-bs-target="#cantidadDeDias">
               <div class="title">HOTELES</div>
               <i class="zmdi zmdi-upload"></i>
-              <div class="value">agregar hotel</div>
+              <div class="value">Agregar hotel</div>
               <div class="stat"><b>13</b>% increase</div>
             </div>
           </div>
           <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
-            <div class="card green">
+            <div class="card green" data-bs-toggle="modal" data-bs-target="#exampleModal">
               <div class="title">Hoteles</div>
               <i class="zmdi zmdi-upload"></i>
               <div class="value">Editar Hoteles</div>
@@ -199,44 +199,80 @@
             <h2 class="title">Agregar habitacion</h2>
             <form method="POST">
               <div class="input-group">
-                <input class="input--style-2" type="text" placeholder="Name" name="name">
+                <input class="input--style-2 js-datepicker" type="text" placeholder="Nombre" name="nombre" #nombre="ngModel"
+                [(ngModel)]="hotelModelPost.nombre">
               </div>
-              <div class="row row-space">
-                <div class="col-2">
-                  <div class="input-group">
-                    <input class="input--style-2 js-datepicker" type="text" placeholder="Birthdate" name="birthday">
-                    <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
-                   </div>
-                   <div class>
 
-                   </div>
-                </div>
-
-              </div>
               <div class="input-group">
-                <div class="rs-select2 js-select-simple select--no-search">
-                  <select name="class">
-                    <option disabled="disabled" selected="selected">tipo</option>
-                    <option>Simple</option>
-                    <option>Media</option>
-                    <option>Lujosa</option>
-                  </select>
-                  <div class="select-dropdown"></div>
-                </div>
+                <input class="input--style-2 js-datepicker" type="text" placeholder="Direccion" name="direccion" #direccion="ngModel"
+                [(ngModel)]="hotelModelPost.direccion">
               </div>
-              <div class="row row-space">
-                <div class="col-2">
-                  <div class="input-group">
-                    <input class="input--style-2" type="text" placeholder="Registration Code" name="res_code">
-                  </div>
-                </div>
+
+              <div class="input-group">
+                <input class="input--style-2 js-datepicker" type="text" placeholder="Descripcion" name="descripcion" #descripcion="ngModel"
+                [(ngModel)]="hotelModelPost.descripcion">
               </div>
-              <div class="p-t-30">
-                <button class="btn btn--radius btn--green" type="submit">agregar</button>
+
+              <div class="input-group">
+                <input class="input--style-2 js-datepicker" type="text" placeholder="Nombre del administrador" name="administrador" #administrador="ngModel"
+                [(ngModel)]="hotelModelPost.administrador">
               </div>
+
+              <div class="input-group">
+                <input class="input--style-2 js-datepicker" type="text" placeholder="Contraseña" name="password" #password="ngModel"
+                [(ngModel)]="hotelModelPost.password">
+              </div>
+
+              <div class="input-group">
+                <input class="input--style-2 js-datepicker" type="text" placeholder="Idioma" name="idioma" #idioma="ngModel"
+                [(ngModel)]="hotelModelPost.idioma">
+              </div>
+
+              <div class="input-group">
+                <input class="input--style-2 js-datepicker" type="text" placeholder="Telefono" name="telefono" #telefono="ngModel"
+                [(ngModel)]="hotelModelPost.telefono">
+              </div>
+
+              <div class="input-group">
+                <input class="input--style-2 js-datepicker" type="text" placeholder="Puesto" name="puesto" #puesto="ngModel"
+                [(ngModel)]="hotelModelPost.puesto">
+              </div>
+
+              <div class="p-t-20">
+                <button class="btn btn-outline-dark" data-bs-dismiss="modal" (click)="postHoteles()" >Guardar</button>
+              </div>
+
             </form>
           </div>
         </div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Recipient:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">Message:</label>
+            <textarea class="form-control" id="message-text"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Send message</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 
       </div>
