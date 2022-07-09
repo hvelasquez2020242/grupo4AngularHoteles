@@ -26,16 +26,23 @@ export class ReservacionService {
     let headersToken = this.headersVariable.set('Authorization', token)
     return this._http.post(this.url + '/agregarReservacion/' + idHabitacion + '/' + cantidadDias, parametros, { headers: headersToken });
   }
-  obtenerUser(token){
+  obtenerUser(token) {
     let headersToken = this.headersVariable.set('Authorization', token);
-    return this._http.get(this.url + '/obtenerUsuariosId', {headers: headersToken})
+    return this._http.get(this.url + '/obtenerUsuariosId', { headers: headersToken })
   }
-  agregarHospedaje(token, idReservacion){
+  agregarHospedaje(token, idReservacion) {
     let parametros = null;
 
     let headersToken = this.headersVariable.set('Authorization', token);
 
-    return this._http.post(this.url + '/agregarHospedaje/' + idReservacion , parametros, {headers: headersToken})
+    return this._http.post(this.url + '/agregarHospedaje/' + idReservacion, parametros, { headers: headersToken })
+
+  }
+  obtenerReservacion(token) {
+
+    let headersToken = this.headersVariable.set('Authorization', token);
+
+    return this._http.get(this.url + '/obtenerReservacion', { headers: headersToken })
 
   }
 

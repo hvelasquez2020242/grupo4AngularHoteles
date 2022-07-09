@@ -13,7 +13,7 @@
             </div>
           </div>
           <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
-            <div class="card green">
+            <div class="card green" (click)="getReservacion()">
               <div class="title">Reservacion</div>
               <i class="zmdi zmdi-upload"></i>
               <div class="value">Ver reservacion</div>
@@ -21,10 +21,10 @@
             </div>
           </div>
           <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
-            <div class="card orange" (click)="getHospedados()">
-              <div class="title">Hospedaje</div>
+            <div class="card orange">
+              <div class="title">Eventos</div>
               <i class="zmdi zmdi-download"></i>
-              <div class="value">Ver hospedados</div>
+              <div class="value">Ver eventos</div>
               <div class="stat"><b>13</b>% decrease</div>
             </div>
           </div>
@@ -56,7 +56,7 @@
                 <th class="text-right">Actions</th>
               </tr>
             </thead>
-            <tr>
+            <tr *ngFor="let hos of hospedajeModelGet">
               <td>
                 <p>New Dashboard</p>
                 <p>Google</p>
