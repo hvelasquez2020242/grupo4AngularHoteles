@@ -49,6 +49,32 @@ export class AdminPanelComponent implements OnInit {
     })
   }
 
+  // putHoteles() {
+  //   this._HotelService.editarHoteles(this.productosModelGetId, this.token).subscribe(
+
+  //     (response) => {
+  //       console.log(response);
+  //       this.getProductos();
+  //     },
+  //     (error) => {
+
+  //     }
+
+  //   )
+  // }
+
+  // getProductoId(idProducto){
+  //   this._empresasService.obtenerProductosId(idProducto, this.token).subscribe(
+  //     (response)=>{
+  //       console.log(response);
+  //       this.productosModelGetId = response.productos;
+
+  //     },
+  //     (error)=>{
+
+  //     }
+  //   )
+  // }
   postHoteles() {
     this._HotelService.agregarHotel(this.hotelModelPost, this.token).subscribe(
       (response) => {
