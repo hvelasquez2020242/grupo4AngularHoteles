@@ -18,6 +18,11 @@ export class HotelService {
     return this._http.get(this.url + '/obtenerHoteles', {headers: this.headersVariable });
   }
 
+  obtenerFacturas(token): Observable<any> {
+    let headersToken = this.headersVariable.set('Authorization', token);
+    return this._http.get(this.url + '/obtenerFacturas', {headers: headersToken});
+  }
+
   agregarHotel(modeloHotel: Hotel, token): Observable<any>{
     let headersToken = this.headersVariable.set('Authorization', token);
 
