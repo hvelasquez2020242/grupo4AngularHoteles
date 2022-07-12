@@ -58,4 +58,11 @@ export class UsuarioService {
     return this.identidad;
   }
 
+  busquerdaUsuarioRol(token) {
+
+    let headersToken = this.headersVariable.set('Authorization', token);
+
+    return this._http.get(this.url + '/obtenerUsuarioRol', { headers: headersToken })
+
+  }
 }
