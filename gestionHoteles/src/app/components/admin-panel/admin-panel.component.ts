@@ -53,8 +53,8 @@ export class AdminPanelComponent implements OnInit {
   getFacturas() {
     this._HotelService.obtenerFacturas(this.token).subscribe({
       next: (response: any) => {
-        console.log(response.hoteles);
-        this.hotelModelGet = response.hoteles;
+        console.log(response.facturas);
+        ;
       },
       error: (err) => {
         console.log(err);
