@@ -56,5 +56,11 @@ export class ReservacionService {
     let parametros = JSON.stringify(modelServicio)
     return this._http.post(this.url + '/agregarServicio/' + idHospedaje, parametros, { headers: headersToken })
   }
+  hacerFactura(token, idFactura){
+    let parametros = null;
+    let headersToken = this.headersVariable.set('Authorization', token);
+
+    return this._http.post(this.url + '/hacerFactura/' + idFactura, parametros, { headers: headersToken })
+  }
 }
 

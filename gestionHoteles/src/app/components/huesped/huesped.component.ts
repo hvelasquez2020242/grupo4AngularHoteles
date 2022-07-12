@@ -5,6 +5,7 @@ import { Usuario } from 'src/app/models/usuario.model';
 import { HotelService } from 'src/app/services/hotele.service';
 import { ReservacionService } from 'src/app/services/reservacion.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-huesped',
   templateUrl: './huesped.component.html',
@@ -92,6 +93,41 @@ export class HuespedComponent implements OnInit {
       },
       error: (err)=>{
         console.log(err);
+
+      }
+    })
+  }
+  a(){
+    Swal.fire({
+      title: 'Desea facturar el usuario?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'SI'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this._reservacionService.hacerFactura(this.token, this.idHospedaje).subscribe({
+          next: (response: any)=>{
+            console.log(response);
+
+          },
+          error: (err)=>{
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Hubo un error',
+            })
+
+          }
+        })
+        Swal.fire(
+          'Facturado',
+          'usuario facturado',
+          'success'
+        )
+      }else{
+        Swal.fire('Cancelado')
 
       }
     })
