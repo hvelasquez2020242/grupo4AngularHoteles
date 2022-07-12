@@ -57,5 +57,10 @@ export class UsuarioService {
 
     return this.identidad;
   }
+  getUsuarioId(id, token){
 
+    let headersToken = this.headersVariable.set('Authorization', token);
+    return this._http.get(this.url + '/obtenerUsuariosId/' + id,  {headers: headersToken})
+
+  }
 }

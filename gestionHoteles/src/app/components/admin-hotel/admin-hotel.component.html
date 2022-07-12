@@ -13,7 +13,7 @@
             </div>
           </div>
           <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
-            <div class="card green" (click)="getReservacion()">
+            <div class="card green" (click)="getReservacion()" data-bs-toggle="modal" data-bs-target="#verReservaciones">
               <div class="title">Reservacion</div>
               <i class="zmdi zmdi-upload"></i>
               <div class="value">Ver reservacion</div>
@@ -21,10 +21,10 @@
             </div>
           </div>
           <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
-            <div class="card orange">
+            <div class="card orange" data-bs-toggle="modal" data-bs-target="#buscarUsuario">
               <div class="title">Eventos</div>
               <i class="zmdi zmdi-download"></i>
-              <div class="value">Ver eventos</div>
+              <div class="value">Buscar usuario</div>
               <div class="stat"><b>13</b>% decrease</div>
             </div>
           </div>
@@ -41,53 +41,42 @@
       <div class="projects mb-4">
         <div class="projects-inner">
           <header class="projects-header">
-            <div class="title">Ongoing Projects</div>
-            <div class="count">| 32 Projects</div>
+            <div class="title">Personas hospedadas</div>
+            <div class="count">|</div>
             <i class="zmdi zmdi-download"></i>
           </header>
           <table class="projects-table">
             <thead>
               <tr>
                 <th>Project</th>
-                <th>Deadline</th>
-                <th>Leader + Team</th>
-                <th>Budget</th>
+                <th>Usuario</th>
+                <th>Total</th>
                 <th>Status</th>
-                <th class="text-right">Actions</th>
+                <th class="text-right">Ver reservacion</th>
               </tr>
             </thead>
             <tr *ngFor="let hos of hospedajeModelGet">
               <td>
-                <p>New Dashboard</p>
-                <p>Google</p>
+                <p>Hospedado</p>
+                <p>Gestor de hoteles</p>
               </td>
-              <td>
-                <p>17th Oct, 15</p>
-                <p class="text-danger">Overdue</p>
-              </td>
+
               <td class="member">
-                <figure><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/584938/people_8.png" /></figure>
+                <figure><img src="https://cdn.icon-icons.com/icons2/1369/PNG/512/-person_90382.png" /></figure>
                 <div class="member-info">
-                  <p>Myrtle Erickson</p>
-                  <p>UK Design Team</p>
+                  <p>User</p>
+                  <p>Huesped</p>
                 </div>
               </td>
               <td>
-                <p>$4,670</p>
+                <p>${{hos.total}}</p>
                 <p>Paid</p>
               </td>
               <td class="status">
-                <span class="status-text status-orange">In progress</span>
+                <span class="status-text status-blue">Activo</span>
               </td>
               <td>
-                <form class="form" action="#" method="POST">
-                  <select class="action-box">
-                    <option>Actions</option>
-                    <option>Start project</option>
-                    <option>Send for QA</option>
-                    <option>Send invoice</option>
-                  </select>
-                </form>
+                <button type="button" class="btn btn-outline-info btn-rounded" data-mdb-ripple-color="dark" (click)="verHuesped(hos.idUsuario, hos._id)" >Ver huesped</button>
               </td>
             </tr>
 
@@ -151,7 +140,7 @@
 
 
                   <div class="p-t-20">
-                    <button class="btn btn-outline-dark" (click)="postHabitacion()" >Enviar</button>
+                    <button class="btn btn-outline-dark" (click)="postHabitacion()" style="color:#000000;">Enviar</button>
                   </div>
                 </form>
               </div>
@@ -161,6 +150,77 @@
 
 
 
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="buscarUsuario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content ">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Buscar usuario</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body bg-dark">
+        <div class="s129">
+          <form id="usuario"  (submit)="buscarUsuario()" >
+            <div class="inner-form">
+              <div class="input-field">
+                <button class="btn-search" type="submit" data-bs-dismiss="modal" (click)='buscarUsuario()'>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" >
+                    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                  </svg>
+                </button>
+                <input id="search" type="text submit" name="search" #search placeholder="¿Que usuario busca?"/>
+              </div>
+            </div>
+          </form>
+        </div>
+       </div>
+      <div class="modal-footer bg-secondary">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary">Buscar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="verReservaciones" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header bg-dark">
+        <h5 class="modal-title " id="exampleModalLabel" style="color: #ffff">Ver reservaciones</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <section class="py-5"  >
+          <div class="container px-4 px-lg-5 mt-5">
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+              <div class="col mb-5" *ngFor="let res of reservacionModelGet">
+                <div class="card h-100">
+                  <!-- Product image-->
+                  <img class="card-img-top" src="https://modelosdoc.com/wp-content/uploads/2020/04/Modelo-de-carta-de-reservaci%C3%B3n-de-hotel.jpg"
+                    alt="..." />
+                  <!-- Product details-->
+                  <div class="card-body p-4">
+                    <div class="text-center" style="color: #000000;">
+                      <!-- Product name-->
+                      <h5 class="fw-bolder" >total: {{res.total}}</h5>
+                      <!-- Product price-->
+                      cantidad de dias: {{res.cantidadDias}}
+                    </div>
+                  </div>
+                  <!-- Product actions-->
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>      </div>
+      <div class="modal-footer bg-dark" >
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>

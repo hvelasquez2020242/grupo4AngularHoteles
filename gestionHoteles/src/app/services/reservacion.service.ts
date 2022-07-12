@@ -5,6 +5,7 @@ import { cantidadDias } from '../models/dias.model';
 import { Hotel } from '../models/hotel.model';
 import { Reservacion } from '../models/reservacion.model';
 import { Hospedados } from '../models/hospedados.model';
+import { Servicio } from '../models/servicio.model';
 
 @Injectable({
   providedIn: 'root'
@@ -45,6 +46,15 @@ export class ReservacionService {
     return this._http.get(this.url + '/obtenerReservacion', { headers: headersToken })
 
   }
+  obtenerServicios(token, idHospedaje) {
+    let headersToken = this.headersVariable.set('Authorization', token);
 
+    return this._http.get(this.url + '/obtenerServicios/' + idHospedaje, { headers: headersToken })
+  }
+  agregarServicio(token, modelServicio: Servicio, idHospedaje) {
+    let headersToken = this.headersVariable.set('Authorization', token);
+    let parametros = JSON.stringify(modelServicio)
+    return this._http.post(this.url + '/agregarServicio/' + idHospedaje, parametros, { headers: headersToken })
+  }
 }
 

@@ -16,6 +16,8 @@ import { HotelesEventosComponent } from './components/hoteles-eventos/hoteles-ev
 import { ReservacionesComponent } from './components/reservaciones/reservaciones.component';
 import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
 import { AdminHotelComponent } from './components/admin-hotel/admin-hotel.component';
+import { HuespedComponent } from './components/huesped/huesped.component';
+import { HospedadoEncontradoComponent } from './components/hospedado-encontrado/hospedado-encontrado.component';
 
 
 @NgModule({
@@ -31,7 +33,9 @@ import { AdminHotelComponent } from './components/admin-hotel/admin-hotel.compon
     HotelesEventosComponent,
     ReservacionesComponent,
     AdminPanelComponent,
-    AdminHotelComponent
+    AdminHotelComponent,
+    HuespedComponent,
+    HospedadoEncontradoComponent
   ],
   imports: [
     BrowserModule,

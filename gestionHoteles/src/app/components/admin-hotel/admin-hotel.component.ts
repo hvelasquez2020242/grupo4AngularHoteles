@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
 import { HotelService } from 'src/app/services/hotele.service';
 import { Habitaciones } from 'src/app/models/habitacion.model';
 import { ReservacionService } from 'src/app/services/reservacion.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import { Router } from '@angular/router';
+import { DOCUMENT } from '@angular/common';
 @Component({
   selector: 'app-admin-hotel',
   templateUrl: './admin-hotel.component.html',
@@ -12,8 +14,12 @@ export class AdminHotelComponent implements OnInit {
   public modelHabitacionPost: Habitaciones;
   public hospedajeModelGet: any;
   public token;
+  public reservacionModelGet: any;
 
-  constructor(private _usuarioService: UsuarioService, private _hotelService: HotelService, private _reservacionService: ReservacionService) {
+
+  @ViewChild('search') myDiv: ElementRef;
+
+  constructor(private _usuarioService: UsuarioService, private _hotelService: HotelService, private _router: Router, private _reservacionService: ReservacionService, @Inject(DOCUMENT) document: Document) {
     this.modelHabitacionPost = new Habitaciones(
       '',
       '',
@@ -41,27 +47,58 @@ export class AdminHotelComponent implements OnInit {
       }
     })
   }
-  getHospedados(){
+  getHospedados() {
     this._hotelService.obtenerHospedados(this.token).subscribe({
-      next: (response: any)=>{
+      next: (response: any) => {
         console.log(response);
         this.hospedajeModelGet = response.hospedados
       },
-      error: (err) =>{
+      error: (err) => {
         console.log(err);
 
       }
     })
   }
-  getReservacion(){
-  this._reservacionService.obtenerReservacion(this.token).subscribe({
-    next: (response: any)=>{
-      console.log(response);
-    },
-    error: (err) =>{
+  getReservacion() {
+    this._reservacionService.obtenerReservacion(this.token).subscribe({
+      next: (response: any) => {
+        this.reservacionModelGet = response.reservacion
+      },
+      error: (err) => {
+        console.log(err);
+
+      }
+    })
+  }
+  verHuesped(usuario, idHospedaje) {
+    this._router.navigate(['/huesped/'+ usuario + '/' +idHospedaje]);
+  }
+  buscarUsuario() {
+    let nombre = (<HTMLInputElement>document.getElementById("search")).value;
+
+    this._hotelService.buscarHhospedado(this.token, nombre).subscribe({
+      next: (response: any) => {
+        this._router.navigate(['/huespedEncontrado/'+ response.usuario._id + '/' + nombre]);
+      },
+      error: (err)=>{
       console.log(err);
 
-    }
-  })
+      }
+    })
+  }
+  getReservaciones(){
+    this._reservacionService.obtenerReservacion(this.token).subscribe({
+      next: (response : any)=>{
+        console.log(response.reservacion);
+      },
+      error: (err)=>{
+        console.log(err);
+
+      }
+    })
   }
 }
+function jQuery(arg0: string) {
+  throw new Error('Function not implemented.');
+}
+

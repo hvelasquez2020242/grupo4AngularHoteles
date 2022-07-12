@@ -10,6 +10,8 @@ import { HotelesEventosComponent } from './components/hoteles-eventos/hoteles-ev
 import { ReservacionesComponent } from './components/reservaciones/reservaciones.component';
 import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
 import { AdminHotelComponent } from './components/admin-hotel/admin-hotel.component';
+import { HuespedComponent } from './components/huesped/huesped.component';
+import { HospedadoEncontradoComponent } from './components/hospedado-encontrado/hospedado-encontrado.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -19,9 +21,11 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'adminHotel',component: AdminHotelComponent},
   {path: 'reservaciones', component: ReservacionesComponent},
+  {path: 'huesped/:idUsuario/:idHospedaje', component: HuespedComponent},
   {path: 'hotelesEventos', component: HotelesEventosComponent, children: [
     {path: 'eventos', component: EventosComponent}
   ]},
+  {path: 'huespedEncontrado/:idUsuario/:nombre', component: HospedadoEncontradoComponent},
   {path: '', component: HomeComponent},
   {path: '**', component: IndefinidoComponent}
 ];

@@ -50,4 +50,10 @@ export class HotelService {
     return this._http.get(this.url + '/obtenerHospedados', {headers: headersToken})
 
   }
+  buscarHhospedado(token, nombre){
+    let headersToken = this.headersVariable.set('Authorization', token);
+
+    return this._http.get(this.url + '/obtnerUsuarioNombre/' + nombre, {headers: headersToken})
+
+  }
 }
