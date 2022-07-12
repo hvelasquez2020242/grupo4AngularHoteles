@@ -79,8 +79,7 @@
   </div> -->
 
 
-<!--</body>-->
-<!-- This templates was made by Colorlib (https://colorlib.com) -->
+<!--</body>--><!-- This templates was made by Colorlib (https://colorlib.com) -->
 
 <!--</html>-->
 
@@ -90,91 +89,64 @@
 
     <main role="main" class="col-md-12 ml-sm-auto col-lg-12 my-3">
       <div class="card-list">
-        <div class="row">
-          <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
-            <div class="card blue" data-bs-toggle="modal" data-bs-target="#cantidadDeDias">
+        <div class="row" class="d-flex justify-content-center">
+          <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4" style="margin-right: 12px;" >
+            <div class="card blue"  data-bs-toggle="modal" data-bs-target="#cantidadDeDias">
               <div class="title">HOTELES</div>
               <i class="zmdi zmdi-upload"></i>
               <div class="value">Agregar hotel</div>
-              <div class="stat"><b>13</b>% increase</div>
+              <div class="stat"><b></b>% increase</div>
             </div>
           </div>
           <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
-            <div class="card green"  data-bs-toggle="modal" data-bs-target="#editar">
-              <div class="title">Hoteles</div>
+            <div class="card green" (click)="getUsuarios()" data-bs-toggle="modal" data-bs-target="#verUsuarios">
+              <div class="title">Usuarios</div>
               <i class="zmdi zmdi-upload"></i>
-              <div class="value">Editar Hoteles</div>
+              <div class="value">Ver Usuarios</div>
               <div class="stat"><b>4</b>% increase</div>
-            </div>
-          </div>
-          <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
-            <div class="card orange">
-              <div class="title">habitacion</div>
-              <i class="zmdi zmdi-download"></i>
-              <div class="value">$80,990</div>
-              <div class="stat"><b>13</b>% decrease</div>
-            </div>
-          </div>
-          <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
-            <div class="card red">
-              <div class="title">habitacion</div>
-              <i class="zmdi zmdi-download"></i>
-              <div class="value">3</div>
-              <div class="stat"><b>13</b>% decrease</div>
             </div>
           </div>
         </div>
       </div>
-      <div class="projects mb-4">
+      <div class="projects mb-4" >
         <div class="projects-inner">
           <header class="projects-header">
-            <div class="title">Ongoing Projects</div>
-            <div class="count">| 32 Projects</div>
+            <div class="title">Hoteles Agregados</div>
             <i class="zmdi zmdi-download"></i>
           </header>
           <table class="projects-table">
             <thead>
               <tr>
-                <th>Project</th>
-                <th>Deadline</th>
-                <th>Leader + Team</th>
-                <th>Budget</th>
-                <th>Status</th>
-                <th class="text-right">Actions</th>
+                <th>Nombre</th>
+                <th>Direccion</th>
+                <th>Administrador</th>
+                <th>Telefono</th>
+                <th>Puesto</th>
+                <th class="text-right">Idioma</th>
               </tr>
             </thead>
-            <tr>
+            <tr *ngFor="let hotel of hotelModelGet">
               <td>
-                <p>New Dashboard</p>
-                <p>Google</p>
+                <p>{{hotel.nombre}}</p>
+                <p></p>
               </td>
               <td>
-                <p>17th Oct, 15</p>
-                <p class="text-danger">Overdue</p>
+                <h5>{{hotel.direccion}}</h5>
               </td>
               <td class="member">
-                <figure><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/584938/people_8.png" /></figure>
-                <div class="member-info">
-                  <p>Myrtle Erickson</p>
-                  <p>UK Design Team</p>
+                <figure><img src="https://cdn.icon-icons.com/icons2/839/PNG/128/business_man_icon-icons.com_66886.png" /></figure>
+                <div class="member-info" >
+                  <p>{{hotel.administrador}}</p>
                 </div>
               </td>
-              <td>
-                <p>$4,670</p>
-                <p>Paid</p>
+              <td >
+                <p>{{hotel.telefono}}</p>
               </td>
               <td class="status">
-                <span class="status-text status-orange">In progress</span>
+                <p class="" >{{hotel.puesto}}</p>
               </td>
               <td>
-                <form class="form" action="#" method="POST">
-                  <select class="action-box">
-                    <option>Actions</option>
-                    <option>Start project</option>
-                    <option>Send for QA</option>
-                    <option>Send invoice</option>
-                  </select>
-                </form>
+                <p>{{hotel.idioma}}</p>
               </td>
             </tr>
 
@@ -200,82 +172,94 @@
             <h2 class="title">Agregar habitacion</h2>
             <form method="POST">
               <div class="input-group">
-                <input class="input--style-2 js-datepicker" type="text" placeholder="Nombre" name="nombre"
-                  #nombre="ngModel" [(ngModel)]="hotelModelPost.nombre">
+                <input class="input--style-2 js-datepicker" style="font-size: 12px;" type="text" placeholder="Nombre" name="nombre" #nombre="ngModel"
+                [(ngModel)]="hotelModelPost.nombre">
               </div>
 
               <div class="input-group">
-                <input class="input--style-2 js-datepicker" type="text" placeholder="Direccion" name="direccion"
-                  #direccion="ngModel" [(ngModel)]="hotelModelPost.direccion">
+                <input class="input--style-2 js-datepicker" style="font-size: 12px;" type="text" placeholder="Direccion" name="direccion" #direccion="ngModel"
+                [(ngModel)]="hotelModelPost.direccion">
               </div>
 
               <div class="input-group">
-                <input class="input--style-2 js-datepicker" type="text" placeholder="Descripcion" name="descripcion"
-                  #descripcion="ngModel" [(ngModel)]="hotelModelPost.descripcion">
+                <input class="input--style-2 js-datepicker" style="font-size: 12px;" type="text" placeholder="Descripcion" name="descripcion" #descripcion="ngModel"
+                [(ngModel)]="hotelModelPost.descripcion">
               </div>
 
               <div class="input-group">
-                <input class="input--style-2 js-datepicker" type="text" placeholder="Nombre del administrador"
-                  name="administrador" #administrador="ngModel" [(ngModel)]="hotelModelPost.administrador">
+                <input class="input--style-2 js-datepicker" style="font-size: 12px;" type="text" placeholder="Nombre del administrador" name="administrador" #administrador="ngModel"
+                [(ngModel)]="hotelModelPost.administrador">
               </div>
 
               <div class="input-group">
-                <input class="input--style-2 js-datepicker" type="text" placeholder="Contraseña" name="password"
-                  #password="ngModel" [(ngModel)]="hotelModelPost.password">
+                <input class="input--style-2 js-datepicker" style="font-size: 12px;" type="text" placeholder="Contraseña" name="password" #password="ngModel"
+                [(ngModel)]="hotelModelPost.password">
               </div>
 
               <div class="input-group">
-                <input class="input--style-2 js-datepicker" type="text" placeholder="Idioma" name="idioma"
-                  #idioma="ngModel" [(ngModel)]="hotelModelPost.idioma">
+                <input class="input--style-2 js-datepicker" style="font-size: 12px;" type="text" placeholder="Idioma" name="idioma" #idioma="ngModel"
+                [(ngModel)]="hotelModelPost.idioma">
               </div>
 
               <div class="input-group">
-                <input class="input--style-2 js-datepicker" type="text" placeholder="Telefono" name="telefono"
-                  #telefono="ngModel" [(ngModel)]="hotelModelPost.telefono">
+                <input class="input--style-2 js-datepicker" style="font-size: 12px;" type="text" placeholder="Telefono" name="telefono" #telefono="ngModel"
+                [(ngModel)]="hotelModelPost.telefono">
               </div>
 
               <div class="input-group">
-                <input class="input--style-2 js-datepicker" type="text" placeholder="Puesto" name="puesto"
-                  #puesto="ngModel" [(ngModel)]="hotelModelPost.puesto">
+                <input class="input--style-2 js-datepicker" style="font-size: 12px;" type="text" placeholder="Puesto" name="puesto" #puesto="ngModel"
+                [(ngModel)]="hotelModelPost.puesto">
               </div>
 
               <div class="p-t-20">
-                <button class="btn btn-outline-dark" data-bs-dismiss="modal" (click)="postHoteles()">Guardar</button>
+                <button class="btn btn-outline-dark" style="font-size:15px" data-bs-dismiss="modal" (click)="postHoteles()" >Guardar</button>
               </div>
 
             </form>
           </div>
         </div>
 
-
-
-
       </div>
     </div>
   </div>
 </div>
-<div class="modal fade" id="editar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+<div class="modal fade" id="verUsuarios" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-scrollable" >
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+      <div class="modal-header bg-dark">
+        <h5 class="modal-title " id="exampleModalLabel" style="color: #ffff">Ver reservaciones</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form>
-          <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">Recipient:</label>
-            <input type="text" class="form-control" id="recipient-name">
+        <section class="py-5"  >
+          <div class="container px-4 px-lg-5 mt-5">
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+              <div class="col mb-5" *ngFor="let us of usuarioModelGet">
+                <div class="card h-100">
+                  <!-- Product image-->
+                  <img class="card-img-top" src="https://modelosdoc.com/wp-content/uploads/2020/04/Modelo-de-carta-de-reservaci%C3%B3n-de-hotel.jpg"
+                    alt="..." />
+                  <!-- Product details-->
+                  <div class="card-body p-4">
+                    <div class="text-center" style="color: #000000;">
+                      <!-- Product name-->
+                      <h5 class="fw-bolder" >{{us.nombre}}</h5>
+                      <!-- Product price-->
+                      {{us.email}}
+                    </div>
+                  </div>
+                  <!-- Product actions-->
+                  <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
-          <div class="mb-3">
-            <label for="message-text" class="col-form-label">Message:</label>
-            <textarea class="form-control" id="message-text"></textarea>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
+        </section>      </div>
+      <div class="modal-footer bg-dark" >
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Send message</button>
       </div>
     </div>
   </div>
