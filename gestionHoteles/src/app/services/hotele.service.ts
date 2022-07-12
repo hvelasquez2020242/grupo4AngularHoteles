@@ -25,23 +25,6 @@ export class HotelService {
 
     return this._http.post(this.url + '/agregarHotel', parametros, {headers: headersToken })
   }
-
-  editarHoteles(modeloHotel: Hotel,token){
-    let headersToken = this.headersVariable.set('Authorization', token)
-
-    let parametro = JSON.stringify(modeloHotel);
-
-    return this._http.put(this.url + '/editarHotel/' + modeloHotel._id, parametro, {headers: headersToken} )
-
-
-  }
-  // obtenerProductosId( idHotel, token ): Observable<any> {
-  //   let headersToken = this.headersVariable.set('Authorization', token )
-
-
-  //   return this._http.get(this.url + '/obtenerProductoEmpresa/' + idProducto, { headers: headersToken})
-  // }
-
   agregarHabitacion(modelHabitaciones: Habitaciones, token): Observable<any>{
     let headersToken = this.headersVariable.set('Authorization', token);
 

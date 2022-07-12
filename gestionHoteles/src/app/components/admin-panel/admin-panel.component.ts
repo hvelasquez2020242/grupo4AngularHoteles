@@ -13,7 +13,7 @@ export class AdminPanelComponent implements OnInit {
   public hotelModelPost: Hotel;
   public token;
   public hotelModelGet: any;
-  public usuarioModelGet: any;
+
 
   constructor(private _router: Router, private _HotelService: HotelService, private _usuarioService: UsuarioService) {
 
@@ -48,47 +48,6 @@ export class AdminPanelComponent implements OnInit {
       }
     })
   }
-
-    // putHoteles() {
-    //   this._HotelService.editarHoteles(this.productosModelGetId, this.token).subscribe(
-
-    //     (response) => {
-    //       console.log(response);
-    //       this.getProductos();
-    //     },
-    //     (error) => {
-
-    //     }
-
-    //   )
-    // }
-
-    // getProductoId(idProducto){
-    //   this._empresasService.obtenerProductosId(idProducto, this.token).subscribe(
-    //     (response)=>{
-    //       console.log(response);
-    //       this.productosModelGetId = response.productos;
-
-    //     },
-    //     (error)=>{
-
-    //     }
-    //   )
-    // }
-
-
-
-    getUsuarios(){
-      this._usuarioService.busquerdaUsuarioRol(this.token).subscribe({
-        next: (response: any)=>{
-          this.usuarioModelGet = response.usuarios
-        },
-        error: (err) =>{
-          console.log(err);
-
-        }
-      })
-      }
 
   postHoteles() {
     this._HotelService.agregarHotel(this.hotelModelPost, this.token).subscribe(
