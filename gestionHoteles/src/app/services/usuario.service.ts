@@ -62,5 +62,14 @@ export class UsuarioService {
     let headersToken = this.headersVariable.set('Authorization', token);
     return this._http.get(this.url + '/obtenerUsuariosId/' + id,  {headers: headersToken})
 
+
+  }
+
+  busquerdaUsuarioRol(token) {
+
+    let headersToken = this.headersVariable.set('Authorization', token);
+
+    return this._http.get(this.url + '/obtenerUsuarioRol', { headers: headersToken })
+
   }
 }
