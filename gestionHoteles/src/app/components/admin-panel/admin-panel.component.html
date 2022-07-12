@@ -83,7 +83,6 @@
 
 <!--</html>-->
 
-
 <div class="container-fluid" style="width: 100%;">
   <div class="row">
 
@@ -94,16 +93,16 @@
             <div class="card blue"  data-bs-toggle="modal" data-bs-target="#cantidadDeDias">
               <div class="title">HOTELES</div>
               <i class="zmdi zmdi-upload"></i>
-              <div class="value">Agregar hotel</div>
-              <div class="stat"><b></b>% increase</div>
+              <div class="value" style="cursor: pointer">Agregar hotel</div>
+              <div class="stat"><b></b></div>
             </div>
           </div>
           <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
             <div class="card green" (click)="getUsuarios()" data-bs-toggle="modal" data-bs-target="#verUsuarios">
               <div class="title">Usuarios</div>
               <i class="zmdi zmdi-upload"></i>
-              <div class="value">Ver Usuarios</div>
-              <div class="stat"><b>4</b>% increase</div>
+              <div class="value" style="cursor: pointer">Ver Usuarios</div>
+              <div class="stat"><b></b></div>
             </div>
           </div>
         </div>
@@ -126,27 +125,39 @@
               </tr>
             </thead>
             <tr *ngFor="let hotel of hotelModelGet">
-              <td>
-                <p>{{hotel.nombre}}</p>
-                <p></p>
-              </td>
-              <td>
-                <h5>{{hotel.direccion}}</h5>
+              <td >
+                <p style="color: #ffff; font-size:18px">{{hotel.nombre}}</p>
               </td>
               <td class="member">
-                <figure><img src="https://cdn.icon-icons.com/icons2/839/PNG/128/business_man_icon-icons.com_66886.png" /></figure>
-                <div class="member-info" >
-                  <p>{{hotel.administrador}}</p>
+                <figure><i class="bi bi-map"></i></figure>
+                <div class="member-info">
+                  <h5>{{hotel.direccion}}</h5>
                 </div>
               </td>
-              <td >
-                <p>{{hotel.telefono}}</p>
+              <td class="member">
+                <figure><i class="bi bi-file-person"></i></figure>
+                <div class="member-info" >
+                  <p style="color: #ffff; font-size:14px">{{hotel.administrador}}</p>
+                </div>
               </td>
-              <td class="status">
-                <p class="" >{{hotel.puesto}}</p>
+              <td class="member">
+                <figure><i class="bi bi-phone"></i></figure>
+                <div class="member-info">
+                  <p style="color: #ffff; font-size:14px">{{hotel.telefono}}</p>
+                </div>
               </td>
-              <td>
-                <p>{{hotel.idioma}}</p>
+              <td class="member">
+                <figure><i class="bi bi-align-bottom"></i></figure>
+                <div class="member-info">
+                  <p style="color: #ffff; font-size:14px" >{{hotel.puesto}}</p>
+                </div>
+              </td>
+              <td class="member">
+                <figure> <i class="bi bi-alt"></i> </figure>
+                <div class="member-info">
+                  <p style="color: #ffff; font-size:14px">{{hotel.idioma}}</p>
+                </div>
+
               </td>
             </tr>
 
