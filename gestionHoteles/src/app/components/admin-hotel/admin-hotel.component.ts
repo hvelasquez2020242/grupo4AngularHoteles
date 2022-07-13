@@ -40,6 +40,13 @@ export class AdminHotelComponent implements OnInit {
     this._hotelService.agregarHabitacion(this.modelHabitacionPost, this.token).subscribe({
       next: (response: any) => {
         console.log(response);
+        this.modelHabitacionPost._id = '',
+        this.modelHabitacionPost.caracteristicas = '',
+        this.modelHabitacionPost.precio = 0;
+        this.modelHabitacionPost.disponibles = '';
+        this.modelHabitacionPost.horario = '';
+        this.modelHabitacionPost.idHotel = '';
+        this.modelHabitacionPost.tipo = '';
       },
       error: (err) => {
         console.log(err);

@@ -9,7 +9,7 @@ import { Hotel } from '../models/hotel.model';
 })
 export class HotelService {
 
-  public url : String = 'http://localhost:3000/api'
+  public url : String = 'https://gestion-hoteles-kinal.herokuapp.com/api'
   constructor(public _http: HttpClient) { }
   public headersVariable = new HttpHeaders().set('Content-Type', 'application/json')
 
@@ -66,7 +66,7 @@ export class HotelService {
   obtenerHabitacionesLujosa(idHotel): Observable<any>{
     return this._http.get(this.url + '/obtenerHabitacionesLujosa/' +idHotel, {headers: this.headersVariable})
   }
-  obtenerHospedados(token){
+  obtenerHospedados(token): Observable<any>{
     let headersToken = this.headersVariable.set('Authorization', token);
 
     return this._http.get(this.url + '/obtenerHospedados', {headers: headersToken})

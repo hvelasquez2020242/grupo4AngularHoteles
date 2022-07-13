@@ -8,7 +8,7 @@ import { Evento } from '../models/evento.model';
 })
 export class EventoService {
 
-  public url : String = 'http://localhost:3000/api'
+  public url : String = 'https://gestion-hoteles-kinal.herokuapp.com/api'
   constructor(public _http: HttpClient) { }
   public headersVariable = new HttpHeaders().set('Content-Type', 'application/json')
 

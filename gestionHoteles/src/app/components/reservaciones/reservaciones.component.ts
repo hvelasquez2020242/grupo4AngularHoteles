@@ -38,8 +38,8 @@ export class ReservacionesComponent implements OnInit {
   getUsuario(){
     this._reservacionService.obtenerUser(this.token).subscribe({
       next: (response: any) => {
-        this.usuario = response.usuario.nombre
-        console.log(response.usuario.nombre);
+        this.usuario = response.usuario
+        console.log(response.usuario);
 
       },
       error: (err) => {

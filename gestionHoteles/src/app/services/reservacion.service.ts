@@ -11,7 +11,7 @@ import { Servicio } from '../models/servicio.model';
   providedIn: 'root'
 })
 export class ReservacionService {
-  public url: String = 'http://localhost:3000/api'
+  public url: String = 'https://gestion-hoteles-kinal.herokuapp.com/api'
   constructor(public _http: HttpClient) { }
   public headersVariable = new HttpHeaders().set('Content-Type', 'application/json')
 
@@ -27,7 +27,7 @@ export class ReservacionService {
     let headersToken = this.headersVariable.set('Authorization', token)
     return this._http.post(this.url + '/agregarReservacion/' + idHabitacion + '/' + cantidadDias, parametros, { headers: headersToken });
   }
-  obtenerUser(token) {
+  obtenerUser(token) : Observable<any>{
     let headersToken = this.headersVariable.set('Authorization', token);
     return this._http.get(this.url + '/obtenerUsuariosId', { headers: headersToken })
   }
@@ -39,14 +39,14 @@ export class ReservacionService {
     return this._http.post(this.url + '/agregarHospedaje/' + idReservacion, parametros, { headers: headersToken })
 
   }
-  obtenerReservacion(token) {
+  obtenerReservacion(token): Observable<any> {
 
     let headersToken = this.headersVariable.set('Authorization', token);
 
     return this._http.get(this.url + '/obtenerReservacion', { headers: headersToken })
 
   }
-  obtenerServicios(token, idHospedaje) {
+  obtenerServicios(token, idHospedaje): Observable<any> {
     let headersToken = this.headersVariable.set('Authorization', token);
 
     return this._http.get(this.url + '/obtenerServicios/' + idHospedaje, { headers: headersToken })
