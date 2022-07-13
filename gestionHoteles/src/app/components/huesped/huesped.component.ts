@@ -97,7 +97,7 @@ export class HuespedComponent implements OnInit {
       }
     })
   }
-  a(){
+  hacerFactura(){
     Swal.fire({
       title: 'Desea facturar el usuario?',
       icon: 'warning',
