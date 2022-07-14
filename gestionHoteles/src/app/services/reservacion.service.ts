@@ -62,5 +62,13 @@ export class ReservacionService {
 
     return this._http.post(this.url + '/hacerFactura/' + idFactura, parametros, { headers: headersToken })
   }
+  eliminarReservacion(token, idReservacion): Observable<any> {
+    let headersToken = this.headersVariable.set('Authorization', token);
+    return this._http.delete(this.url + '/eliminarReservacion/' + idReservacion, { headers: headersToken })
+  }
+  obtenerFacturasId(token): Observable<any> {
+    let headersToken = this.headersVariable.set('Authorization', token);
+    return this._http.get(this.url + '/obtenerFacturasId', { headers: headersToken })
+  }
 }
 

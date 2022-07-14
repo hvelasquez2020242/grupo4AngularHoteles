@@ -75,7 +75,7 @@ export class ReservacionesComponent implements OnInit {
           }
         })
         Swal.fire(
-          'Inciada',
+          'Iniciada',
           'Ya inicio su estadia en el hotel',
           'success'
         )
@@ -84,7 +84,40 @@ export class ReservacionesComponent implements OnInit {
       }
     })
   }
-  cancelarHospedaje(){
+  cancelarHospedaje(idReservacion){
 
+    Swal.fire({
+      title: 'Desea cancelar su reservacion?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'SI'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this._reservacionService.eliminarReservacion(this.token, idReservacion).subscribe({
+          next: (response: any) => {
+            console.log(response);
+            this.getUsuarioId();
+
+          },
+          error: (err) => {
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Hubo un error',
+            })
+
+          }
+        })
+        Swal.fire(
+          'Eliminada',
+          'Se elimino su reservacion',
+          'success'
+        )
+      } else {
+        Swal.fire('Cancelado')
+      }
+    })
   }
 }

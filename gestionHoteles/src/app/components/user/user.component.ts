@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from 'src/app/models/usuario.model';
+import { ReservacionService } from 'src/app/services/reservacion.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
@@ -9,17 +10,35 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 })
 export class UserComponent implements OnInit {
   public usuarioModelGet: Usuario;
-  constructor(private _usuarioService: UsuarioService) {
-    this.usuarioModelGet = new Usuario('','','','','')
+  public token;
+  public reservacionesModelGet: any;
+  constructor(private _usuarioService: UsuarioService, private _reservacionService: ReservacionService) {
+    this.usuarioModelGet = new Usuario('', '', '', '', '')
+    this.token = this._usuarioService.getToken();
+
   }
 
   ngOnInit(): void {
     this.getUser()
   }
-  getUser(){
-    this.usuarioModelGet =     this._usuarioService.getIdentidad()
+  getUser() {
+    this.usuarioModelGet = this._usuarioService.getIdentidad()
     console.log(this.usuarioModelGet);
 
   }
+  obtenerHistorial() {
+    this._reservacionService.obtenerFacturasId(this.token).subscribe({
+      next: (response: any)=>{
+        console.log(response);
+        this.reservacionesModelGet = response.facturas
 
+      },
+      error: (err)=>{
+        console.log(err);
+
+      }
+    })
+
+  }
 }
+
