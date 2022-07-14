@@ -12,22 +12,26 @@ import { AdminPanelComponent } from './components/admin-panel/admin-panel.compon
 import { AdminHotelComponent } from './components/admin-hotel/admin-hotel.component';
 import { HuespedComponent } from './components/huesped/huesped.component';
 import { HospedadoEncontradoComponent } from './components/hospedado-encontrado/hospedado-encontrado.component';
+import { UserComponent } from './components/user/user.component';
 
 const routes: Routes = [
-  {path: 'login', component: LoginComponent},
-  {path: 'admin', component: AdminPanelComponent},
-  {path: 'registro', component: RegistroComponent},
-  {path: 'hoteles', component: HotelesComponent},
-  {path: 'home', component: HomeComponent},
-  {path: 'adminHotel',component: AdminHotelComponent},
-  {path: 'reservaciones', component: ReservacionesComponent},
-  {path: 'huesped/:idUsuario/:idHospedaje', component: HuespedComponent},
-  {path: 'hotelesEventos', component: HotelesEventosComponent, children: [
-    {path: 'eventos', component: EventosComponent}
-  ]},
-  {path: 'huespedEncontrado/:idUsuario/:nombre', component: HospedadoEncontradoComponent},
-  {path: '', component: HomeComponent},
-  {path: '**', component: IndefinidoComponent}
+  { path: 'login', component: LoginComponent },
+  { path: 'admin', component: AdminPanelComponent },
+  { path: 'registro', component: RegistroComponent },
+  { path: 'user', component: UserComponent },
+  { path: 'hoteles', component: HotelesComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'adminHotel', component: AdminHotelComponent },
+  { path: 'reservaciones', component: ReservacionesComponent },
+  { path: 'huesped/:idUsuario/:idHospedaje', component: HuespedComponent },
+  {
+    path: 'hotelesEventos', component: HotelesEventosComponent, children: [
+      { path: 'eventos', component: EventosComponent }
+    ]
+  },
+  { path: 'huespedEncontrado/:idUsuario/:nombre', component: HospedadoEncontradoComponent },
+  { path: '', component: HomeComponent },
+  { path: '**', component: IndefinidoComponent }
 ];
 
 @NgModule({

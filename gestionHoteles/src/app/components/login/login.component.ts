@@ -43,6 +43,7 @@ export class LoginComponent implements OnInit {
     return new Promise((resolve, reject) => {
       this._usuarioService.login(this.usuarioModel, "true").subscribe(
         (response) => {
+
           localStorage.setItem("token", response.token)
           resolve(response);
         },
@@ -57,25 +58,24 @@ export class LoginComponent implements OnInit {
   login() {
     this._usuarioService.login(this.usuarioModel).subscribe(
       (response) => {
-        console.log(response.usuario.rol);
 
         this.getTokenPromesa().then(respuesta => {
           localStorage.setItem('identidad', JSON.stringify(response.usuario))
+          if (response.usuario.rol === 'SuperAdmin') {
+            this._router.navigate(['/admin']);
 
-        })
-        if (response.usuario.rol === 'SuperAdmin') {
-          this._router.navigate(['/admin']);
+          } else {
+            if(response.usuario.rol === 'adminHotel'){
+              this._router.navigate(['/adminHotel']);
 
-        } else {
-          if(response.usuario.rol === 'adminHotel'){
-            this._router.navigate(['/adminHotel']);
+            }else{
+              this._router.navigate(['/hoteles']);
 
-          }else{
-            this._router.navigate(['/hoteles']);
+            }
 
           }
+        })
 
-        }
       },
       (error) => {
         console.log(<any>error);

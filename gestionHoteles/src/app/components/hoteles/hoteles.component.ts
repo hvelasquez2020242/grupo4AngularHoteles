@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { cantidadDias } from 'src/app/models/dias.model';
 import { ReservacionService } from 'src/app/services/reservacion.service';
 import { Reservacion } from 'src/app/models/reservacion.model';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-hoteles',
@@ -62,7 +63,9 @@ export class HotelesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getHoteles()
+    this.getHoteles();
+    this.token = this._usuarioService.getToken()
+
   }
 
 
@@ -135,16 +138,30 @@ export class HotelesComponent implements OnInit {
   }
 
   asignarDias() {
+    if (this.token === '') {
 
-    this._reservacionService.agregarReservacion(this.token ,this.hotelModelGetId._id , this.cantidadDeDiasModelPost.numero).subscribe(
-      (response) => {
-        console.log(response);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Necestia estar registrado con su cuenta!',
+        timer: 3000
+      }).then((result) => {
+        this._router.navigate(['/login']);
+      });
+    } else {
+      this._reservacionService.agregarReservacion(this.token, this.hotelModelGetId._id, this.cantidadDeDiasModelPost.numero).subscribe(
+        (response) => {
+          this._router.navigate(['/reservaciones']);
+          console.log(response);
 
-      },
-      (err) => {
-        console.log(<any>err);
+        },
+        (err) => {
+          console.log(typeof this.token);
 
-      }
-    )
+        }
+      )
+    }
+
+
   }
 }

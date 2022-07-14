@@ -18,6 +18,7 @@ import { AdminPanelComponent } from './components/admin-panel/admin-panel.compon
 import { AdminHotelComponent } from './components/admin-hotel/admin-hotel.component';
 import { HuespedComponent } from './components/huesped/huesped.component';
 import { HospedadoEncontradoComponent } from './components/hospedado-encontrado/hospedado-encontrado.component';
+import { UserComponent } from './components/user/user.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { HospedadoEncontradoComponent } from './components/hospedado-encontrado/
     AdminPanelComponent,
     AdminHotelComponent,
     HuespedComponent,
-    HospedadoEncontradoComponent
+    HospedadoEncontradoComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,

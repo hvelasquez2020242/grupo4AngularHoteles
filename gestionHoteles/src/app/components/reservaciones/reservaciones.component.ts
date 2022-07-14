@@ -35,7 +35,7 @@ export class ReservacionesComponent implements OnInit {
       }
     })
   }
-  getUsuario(){
+  getUsuario() {
     this._reservacionService.obtenerUser(this.token).subscribe({
       next: (response: any) => {
         this.usuario = response.usuario
@@ -48,27 +48,43 @@ export class ReservacionesComponent implements OnInit {
       }
     })
   }
-  postHospedaje(idReservacion){
-    this._reservacionService.agregarHospedaje(this.token, idReservacion).subscribe({
-      next: (response: any) =>{
-        this.getUsuarioId();
-        console.log(response);
-        Swal.fire({
-          title: 'Hospedado exitosamente',
-          icon: 'success',
-          showConfirmButton: false,
-          timer: 1500
-        });
-      },
-      error: (err) =>{
-        Swal.fire({
-          title: err.error.mensaje,
-          icon: 'error',
-          showConfirmButton: false,
-          timer: 1500
-        })
+  postHospedaje(idReservacion) {
 
+    Swal.fire({
+      title: 'Desea empezar su reservacion?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'SI'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this._reservacionService.agregarHospedaje(this.token, idReservacion).subscribe({
+          next: (response: any) => {
+            console.log(response);
+            this.getUsuarioId();
+
+          },
+          error: (err) => {
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Hubo un error',
+            })
+
+          }
+        })
+        Swal.fire(
+          'Inciada',
+          'Ya inicio su estadia en el hotel',
+          'success'
+        )
+      } else {
+        Swal.fire('Cancelado')
       }
     })
+  }
+  cancelarHospedaje(){
+
   }
 }
